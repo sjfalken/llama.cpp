@@ -5210,7 +5210,6 @@ class GPT2Model(TextModel):
     def modify_tensors(self, data_torch: Tensor, name: str, bid: int | None) -> Iterable[tuple[str, Tensor]]:
         # we don't need these
         if name.endswith((".attn.bias", ".attn.masked_bias")):
-            yield from super().modify_tensors(data_torch, name, bid)
             return
 
         if name.endswith((".c_attn.weight", ".c_proj.weight", ".c_fc.weight", ".c_proj.weight")):
